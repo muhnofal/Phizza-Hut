@@ -13,6 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage');
-});
+
+// Route::group(['middleware' => 'auth'], function() {
+//     Route::get('home', 'HomeController@index'); 
+// });
+
+// Route::get('login', function(){
+//     return view('login');
+// });
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::get('/home', function(){
+//     return view('member/home-member-page');
+// });
+// Route::get('/', 'AuthController@index')->name('login');
+// Route::post('login', 'AuthController@login')->name('login');
+// Route::get('logout', 'AuthController@logout')->name('logout');
+
+
+Auth::routes();
+Route::get('/', 'GuestController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin', 'AdminController@index');
+Route::get('/user', 'UserController@index');
+
+
+
+
