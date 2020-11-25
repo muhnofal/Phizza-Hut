@@ -35,7 +35,7 @@
         <p class="h3 text-muted"> Order it now!</p>
 
         <form>
-            <div class="form-row ml-1">
+            <div class="form-row ml-1 mt-4">
               
         
                 <label class="mt-1" for="">Search Pizza: </label>
@@ -50,22 +50,32 @@
         </form>
         
         
-        <div class="row mb-4 mt-5">
+        <div class="row row-cols-1 row-cols-md-3 mb-4 mt-5">
         
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="assets/pizza11.jpg" class="card-img-top">
-        
-                    <div class="card-body">
-                      <p class="card-text">Tuna Man</p>
-                      <p class="text-muted">Rp. 100000</p>
-                    </div>
-        
-                </div>
-            </div>
-        
-        </div>
+            @foreach ($pizzas as $pizza)
 
+                <div class="col-md-4 mb-4">
+
+                    <a href="" class="text-reset text-decoration-none">
+
+                        <div class="card" style="width: 20rem;">
+                            <img src="assets/{{ $pizza->photo }}" class="card-img-top">
+                
+                            <div class="card-body">
+                            <p class="card-text">{{ $pizza->name }}</p>
+                            <p class="text-muted">Rp. {{ $pizza->price }}</p>
+                            </div>
+                
+                        </div>
+
+                    </a>
+
+                </div>
+
+            @endforeach
+
+        </div>
+        {{ $pizzas->links() }}
     </div>
 
 </div>
@@ -74,22 +84,3 @@
 
 
 @endsection
-
-
-{{-- <div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">Dashboard</div>
-
-            <div class="card-body">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
-                You are logged in!
-            </div>
-        </div>
-    </div>
-</div> --}}
