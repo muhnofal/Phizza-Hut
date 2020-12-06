@@ -35,7 +35,7 @@
         
             @foreach ($pizzas as $pizza)
                 <div class="col-md-4 mb-4">
-                    <a href="" class="text-reset text-decoration-none">
+                    <a href="/pizza-detail/{{ $pizza->id }}" class="text-reset text-decoration-none">
 
                         <div class="card" style="width: 20rem;">
                             <img src="assets/{{ $pizza->photo }}" class="card-img-top">

@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-danger shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="assets/logo.png" alt="" width="35" height="35">
+                    <img src="/assets/logo.png" alt="" width="35" height="35">
                     PHizza Hut
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -52,14 +52,14 @@
                          @else
 
                             <li class="nav-item">
-                                <a href="" class="nav-link text-light">
+                                <a href="@yield('link1ref')" class="nav-link text-light">
                                     {{-- {{ __('View Transaction History') }} --}}
                                     @yield('link1')
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="" class="nav-link text-light">
+                                <a href="@yield('link2ref')" class="nav-link text-light">
                                     {{-- {{ __('View Cart') }} --}}
                                     @yield('link2')
                                 </a>

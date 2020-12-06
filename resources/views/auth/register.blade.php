@@ -13,7 +13,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -96,12 +96,12 @@
                             <div class="col-md-6">
 
                                 <div class="form-check m-2">
-                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
                                     <label class="form-check-label" for="male">
                                       Male
                                     </label>
 
-                                    <input class="form-check-input ml-4" type="radio" name="gender" id="female" value="female" checked>
+                                    <input class="form-check-input ml-4" type="radio" name="gender" id="female" value="female">
                                     <label class="form-check-label ml-5" for="female">
                                         Female
                                     </label>

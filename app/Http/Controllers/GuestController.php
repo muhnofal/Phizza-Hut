@@ -44,10 +44,10 @@ class GuestController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    */
+    public function show(Pizza $pizza)
     {
-        //
+        return view('guest/pizza-detail-guest-page', compact('pizza'));
     }
 
     /**
@@ -58,7 +58,7 @@ class GuestController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

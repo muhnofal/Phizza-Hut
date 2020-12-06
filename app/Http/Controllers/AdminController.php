@@ -22,4 +22,18 @@ class AdminController extends Controller
             return redirect('/');
         } 
     }
+
+    public function show(Pizza $pizza){
+        return view('admin/admin-pizza-detail-page', compact('pizza'));
+    }
+
+    public function editpizza(Pizza $pizza)
+    {
+        return view('admin/edit-pizza-page', compact('pizza'));
+    }
+
+    public function deletepizza(Pizza $pizza)
+    {
+        return view('admin/delete-pizza-page', compact('pizza'));
+    }
 }

@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('title', 'Welcome')
+
 @section('link1', 'View Transacion History')
+@section('link1ref', 'user/view-transaction-history')
 @section('link2', 'View Cart')
 
 @section('link3')
@@ -56,7 +58,7 @@
 
                 <div class="col-md-4 mb-4">
 
-                    <a href="" class="text-reset text-decoration-none">
+                    <a href="/user/pizza-detail/{{ $pizza->id }}" class="text-reset text-decoration-none">
 
                         <div class="card" style="width: 20rem;">
                             <img src="assets/{{ $pizza->photo }}" class="card-img-top">
