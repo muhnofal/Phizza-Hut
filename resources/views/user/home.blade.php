@@ -2,9 +2,10 @@
 
 @section('title', 'Welcome')
 
-@section('link1', 'View Transacion History')
+@section('link1', 'View Transaction History')
 @section('link1ref', 'user/view-transaction-history')
 @section('link2', 'View Cart')
+@section('link2ref', 'user/view-cart')
 
 @section('link3')
 

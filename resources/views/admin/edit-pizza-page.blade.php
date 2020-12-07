@@ -35,44 +35,48 @@
             <div class="col-md-8">
                 <div class="card-body pl-5 pr-5">
                     <p class="h5 font-weight-bold">Edit Pizza Details</p>
-                
-                    <div class="form-group row">
-                        <label for="editpizzaname" class="col-sm-3 col-form-label">Pizza Name: </label>
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control" id="editpizzaname" name="editpizzaname">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="editpizzaprice" class="col-sm-3 col-form-label">Pizza Price: </label>
-                        <div class="col-sm-8">
-                          <input type="number" class="form-control" id="editpizzaprice" name="editpizzaprice">
-                        </div>
-                    </div>
-    
-                    <div class="form-group row">
-                        <label for="editpizzadesc" class="col-sm-3 col-form-label">Pizza Description: </label>
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control" id="editpizzadesc" name="editpizzadesc">
-                        </div>
-                    </div>
-    
-                    <div class="form-group row">
-    
-                        <label for="editpizzaimg" class="col-sm-3 col-form-label">Pizza Image: </label>
-                        <div class="col-sm-8">
-                            <input type="file" class="form-control" id="editpizzaimg" name="editpizzaimg">
+                    
+                    <form method="POST" action="/admin/{{ $pizza->id }}">
+                        @method('patch')
+                        @csrf
+                        <div class="form-group row">
+                            <label for="editpizzaname" class="col-sm-3 col-form-label">Pizza Name: </label>
+                            <div class="col-sm-8">
+                              <input type="text" class="form-control" id="editpizzaname" name="editpizzaname" value="{{ $pizza->name }}">
+                            </div>
                         </div>
     
-                    </div>
-                        
-                    <div class="form-group row mb-0">
-                        <div class="col-md-6">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Edit Pizza') }}
-                            </button>
+                        <div class="form-group row">
+                            <label for="editpizzaprice" class="col-sm-3 col-form-label">Pizza Price: </label>
+                            <div class="col-sm-8">
+                              <input type="number" class="form-control" id="editpizzaprice" name="editpizzaprice" value="{{ $pizza->price }}">
+                            </div>
                         </div>
-                    </div>
+        
+                        <div class="form-group row">
+                            <label for="editpizzadesc" class="col-sm-3 col-form-label">Pizza Description: </label>
+                            <div class="col-sm-8">
+                              <input type="text" class="form-control" id="editpizzadesc" name="editpizzadesc" value="{{ $pizza->description }}">
+                            </div>
+                        </div>
+        
+                        <div class="form-group row">
+        
+                            <label for="editpizzaimg" class="col-sm-3 col-form-label">Pizza Image: </label>
+                            <div class="col-sm-8">
+                                <input type="file" class="form-control" id="editpizzaimg" name="editpizzaimg" value="{{ $pizza->photo }}">
+                            </div>
+        
+                        </div>
+                            
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Edit Pizza') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
 
                 </div>
             </div>

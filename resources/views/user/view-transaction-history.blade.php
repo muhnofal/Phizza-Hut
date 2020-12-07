@@ -3,8 +3,12 @@
 @section('title', 'View Transaction History')
 
 @section('link1', 'View Transaction History')
+@section('link1ref', '/user/view-transaction-history')
 @section('link2', 'View Cart')
+@section('link2ref', '/user/view-cart')
+
 @section('link3')
+
 <li class="nav-item dropdown">
     <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
         {{ Auth::user()->name }} <span class="caret"></span>
@@ -22,33 +26,33 @@
         </form>
     </div>
 </li>
-@endsection
 
+@endsection
 
 @section('content')
 
 <div class="container">
+   
+    <div class="row justify-content-center">
+            
+        <div class="col-md-10">
+                
+            <div class="card">
 
-    <div class="jumbotron bg-light">
+                <a href="/user/transaction-detail" class="text-reset text-decoration-none">
+                    <div class="card-header bg-danger text-light"> Transaction at 2020-05-19 13:36:33 </div>
+                </a>
 
-        <div class="card mb-3" style="max-width: 100%">
-            <div class="row no-gutters p-5">
-              <div class="col-md-4">
-                <img src="/assets/pizza11.jpg" class="card-img" alt="Ini Gambar Pizza">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title mb-1">Tuna and Onion</h5>
-                  <p class="card-text mb-1">Rp. 85000</p>
-                  <p class="card-text mb-1">Quantity: 2</p>
-                  <p class="card-text mb-1">Total Price: Rp.170000</p>
-                </div>
-              </div>
+                <a href="/user/transaction-detail" class="text-reset text-decoration-none">
+                    <div class="card-body"> Transaction at 2020-05-19 13:36:46 </div>
+                </a>
+
             </div>
+
         </div>
 
     </div>
-    
+
 </div>
 
 @endsection

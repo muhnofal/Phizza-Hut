@@ -2,7 +2,9 @@
 
 @section('title', 'Welcome')
 @section('link1', 'View All User Transaction')
+@section('link1ref', '/admin/view-all-user-transaction')
 @section('link2', 'View All User')
+@section('link2ref', '/admin/view-all-user')
 @section('link3')
     <li class="nav-item dropdown">
         <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -45,9 +47,9 @@
                 
                             <div class="card-body">
                             <p class="card-text">{{ $pizza->name }}</p>
-                            <p class="text-muted">Rp. {{ $pizza->price }}</p>
+                            <p class="text-muted">Rp. {{ $pizza->price }} </p>
 
-                            <a href="admin/edit-pizza/{{ $pizza->id }}">
+                            <a href="admin/{{ $pizza->id }}/edit-pizza">
                                 <button type="button" class="btn btn-primary">Update Pizza</button>
                             </a>
 

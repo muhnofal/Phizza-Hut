@@ -39,12 +39,18 @@
                     <p class="card-text">{{ $pizza->description }}</p>
 
                     <p class="card-text">Rp. {{ $pizza->price }}</p>
-                        
+
                     <div class="form-group row mb-0">
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-danger">
-                                {{ __('Delete Pizza') }}
-                            </button>
+
+                            <form action="{{ $pizza->id }}" method="POST">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger">
+                                    {{ __('Delete Pizza') }}
+                                </button>                        
+                            </form>
+                            
                         </div>
                     </div>
 
