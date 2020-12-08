@@ -13,9 +13,11 @@
 
         <div class="card mb-3" style="max-width: 100%">
             <div class="row no-gutters p-5">
+
               <div class="col-md-4">
                 <img src="/assets/{{ $pizza->photo }}" class="card-img" alt="Ini Gambar Pizza">
               </div>
+              
               <div class="col-md-8">
                 <div class="card-body">
                   <h5 class="card-title mb-1 font-weight-bold">{{ $pizza->name }}</h5>
@@ -23,6 +25,7 @@
                   <p class="card-text mb-1">Rp. {{ $pizza->price }}</p>
                 </div>
               </div>
+
             </div>
         </div>
 

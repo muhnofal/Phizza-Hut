@@ -38,14 +38,25 @@
         <div class="col-md-10">
                 
             <div class="card">
+                
+                @foreach ($transactions as $transaction)
 
-                <a href="/user/transaction-detail" class="text-reset text-decoration-none">
-                    <div class="card-header bg-danger text-light"> Transaction at 2020-05-19 13:36:33 </div>
-                </a>
+                @php
+                $id = $transaction->id;
+                    
+                @endphp
 
-                <a href="/user/transaction-detail" class="text-reset text-decoration-none">
-                    <div class="card-body"> Transaction at 2020-05-19 13:36:46 </div>
-                </a>
+                @if ($id%2==1)
+                    <a href="/user/transaction-detail" class="text-reset text-decoration-none">
+                        <div class="card-body bg-danger text-light"> Transaction at {{ $transaction->created_at }} </div>
+                    </a>
+                @else
+                    <a href="/user/transaction-detail" class="text-reset text-decoration-none">
+                        <div class="card-body"> Transaction at {{ $transaction->created_at }} </div>
+                    </a>
+                @endif
+
+                @endforeach
 
             </div>
 

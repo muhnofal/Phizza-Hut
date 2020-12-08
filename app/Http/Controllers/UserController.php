@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Pizza;
+use App\Cart;
+use App\User;
 
 class UserController extends Controller
 {
@@ -25,6 +26,19 @@ class UserController extends Controller
 
     public function show(Pizza $pizza){
         return view('user/user-pizza-detail', compact('pizza'));
+    }
+
+    public function addToCart(Pizza $pizza, Request $request){
+
+        $cart =  Cart::create([
+            'user_id' => $request->user_id,
+            'quantity' => $request->quantity,
+            'pizza_id' => $pizza->id
+        ]);
+
+        return redirect('/user');
+
+        // return $pizza;
     }
 
 }

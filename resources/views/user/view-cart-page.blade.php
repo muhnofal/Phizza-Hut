@@ -31,54 +31,69 @@
 
     <div class="jumbotron bg-light">
 
-        <div class="card mb-3" style="max-width: 100%">
-            <div class="row no-gutters p-5">
-              <div class="col-md-4">
-                <img src="/assets/pizza11.jpg" class="card-img" alt="Ini Gambar Pizza">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title mb-1 font-weight-bold"> Title </h5>
-                  <p class="card-text mb-1"> Price </p>
-                  <p class="card-text mb-1"> Quantity: 2</p>
+        @foreach ($carts as $cart)
+            <div class="card mb-3" style="max-width: 100%">
+                <div class="row no-gutters p-5">
+                <div class="col-md-4">
+                    <img src="/assets/{{ $cart->pizza->photo }}" class="card-img" alt="Ini Gambar Pizza">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                    <h5 class="card-title mb-1 font-weight-bold"> {{ $cart->pizza->name }} </h5>
+                    <p class="card-text mb-1"> Rp. {{ $cart->pizza->price }} </p>
+                    <p class="card-text mb-1"> Quantity: {{ $cart->quantity }}</p>
 
-                    <div class="form-group row">
-                        <label for="quantity" class="col-md-2 col-form-label">{{ __('Quantity') }}</label>
+                        <div class="form-group row">
+                            <label for="quantity" class="col-md-2 col-form-label">{{ __('Quantity') }}</label>
 
-                        <div class="col-md-5">
-                            <input id="quantity" type="text" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" required autocomplete="quantity" autofocus>
+                            <div class="col-md-5">
+                                <input id="quantity" type="text" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" autocomplete="quantity" autofocus>
 
-                            @error('quantity')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                                @error('quantity')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
                         </div>
+
+                        <span class="d-block pt-3">
+                            <a href="">
+                                <button type="button" class="btn btn-primary">Update Quantity</button>
+                            </a>
+                        </span>
+
+                        <span class="d-block pt-3">
+                            <a href="">
+                                <button type="button" class="btn btn-danger">Delete From Cart</button>
+                            </a>
+                        </span>
 
                     </div>
 
-                    <span class="d-block pt-3">
-                        <a href="">
-                            <button type="button" class="btn btn-primary">Update Quantity</button>
-                        </a>
-                    </span>
-
-                    <span class="d-block pt-3">
-                        <a href="">
-                            <button type="button" class="btn btn-danger">Delete From Cart</button>
-                        </a>
-                    </span>
-
+                </div>
                 </div>
 
-              </div>
             </div>
 
-            <a href="" class="mx-auto pb-5">
-                <button type="submit" class="btn btn-dark">Check Out</button>
-            </a>
+        <form action="/user" method="POST">
+            <input type="hidden" name="pizza_id" id="" value="{{ $cart->pizza->id }}">
+            @endforeach
+            @csrf
+            
+            @if ($amount != 0)
+                <div class="mx-auto" style="width: 200px;">
+                    <button type="submit" class="btn btn-dark">Check Out</button>
+                </div>
 
-        </div>
+            @else
+
+            <p class="h1 text-center"> Add ke cart dulu uyy</p>
+
+            @endif
+
+        </form>
 
     </div>
     

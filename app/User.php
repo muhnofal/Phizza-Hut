@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Cart;
+use App\Transaction;
 
 class User extends Authenticatable
 {
@@ -45,5 +47,13 @@ class User extends Authenticatable
     public function hasRole($role) {
       return $this->roles()->where('name', $role)->count() == 1;
     }
-    
+
+    public function cart(){
+        return $this->hasMany(Cart::class);
+    }
+
+    public function transaction(){
+        return $this->hasMany(Transaction::class);
+    }
+
 }

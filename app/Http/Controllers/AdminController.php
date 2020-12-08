@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pizza;
 use App\User;
+use App\Transaction;
 
 class AdminController extends Controller
 {
@@ -26,24 +27,6 @@ class AdminController extends Controller
 
     public function store(Request $request){
 
-        // $request->validate([
-        //     'pizzaname'=>'required',
-        //     'pizzaprice'=>'required',
-        //     'pizzadesc'=>'required',
-        //     'pizzaimg'=>'required',
-        // ]);
-
-        // $pizza = new Pizza;
-        // $pizza->name = $request->pizzaname;
-        // $pizza->price = $request->pizzaprice;
-        // $pizza->description = $request->pizzadesc;
-        // $pizza->photo = $request->pizzaimg;
-
-
-        // $pizza->save();
-
-        // Pizza::create($request->all());
-
         $pizza =  Pizza::create([
             'name' => $request['pizzaname'],
             'price' => $request['pizzaprice'],
@@ -62,9 +45,18 @@ class AdminController extends Controller
         return view('admin/view-all-user', compact('users'));
     }
 
+    public function viewAllUserTransaction(){
+        $transactions = Transaction::all();
+        return view('admin/view-all-user-transaction', compact('transactions'));
+    }
+
     //Pizza Detail
     public function show(Pizza $pizza){
         return view('admin/admin-pizza-detail-page', compact('pizza'));
+    }
+
+    public function addPizzaPage(){
+        return view('admin/add-pizza-page');
     }
 
     //Edit Pizza
@@ -74,14 +66,6 @@ class AdminController extends Controller
     }
     
     public function update(Request $request, Pizza $pizza){
-
-        // Pizza::where('id', $pizza->id)
-        //   ->update([
-        //         'name' => $request['editpizzaname'],
-        //         'price' => $request['editpizzaprice'],
-        //         'description' => $request['editpizzadesc'],
-        //         'photo' => $request['editpizzaimg']        
-        //       ]);
 
             Pizza::where('id', $pizza->id)
             ->update([

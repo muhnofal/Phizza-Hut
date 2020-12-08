@@ -3,7 +3,9 @@
 @section('title', 'Pizza Detail')
 
 @section('link1', 'View Transaction History')
+@section('link1ref', '/user/view-transaction-history')
 @section('link2', 'View Cart')
+@section('link2ref', '/user/view-cart')
 
 @section('link3')
 <li class="nav-item dropdown">
@@ -42,25 +44,29 @@
                   <h5 class="card-text mb-1"> {{ $pizza->description }} </h5>
                   <p class="card-text mb-1">Rp. {{ $pizza->price }} </p>
 
-                    <div class="form-group row">
-                        <label for="quantity" class="col-md-2 col-form-label">{{ __('Quantity') }}</label>
+                    <form action="/user/pizza-detail/{{ $pizza->id }}" method="POST">
+                        @csrf
+                        
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" name="user_id">
 
-                        <div class="col-md-5">
-                            <input id="quantity" type="text" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" required autocomplete="quantity" autofocus>
-
-                            @error('quantity')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="form-group row">
+                            <label for="quantity" class="col-md-2 col-form-label">{{ __('Quantity') }}</label>
+    
+                            <div class="col-md-5">
+                                <input id="quantity" type="text" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" required autocomplete="quantity" autofocus>
+    
+                                @error('quantity')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+    
                         </div>
 
-                    </div>
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </form>
 
-                    
-                    <a href="">
-                        <button type="button" class="btn btn-primary">Add to Cart</button>
-                    </a>
 
                 </div>
               </div>

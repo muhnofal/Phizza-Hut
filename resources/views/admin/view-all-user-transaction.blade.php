@@ -32,21 +32,32 @@
     <div class="row justify-content-center">
             
         <div class="col-md-12 mb-4">
-                
-            <div class="card">
+            
+            @foreach ($transactions as $transaction)
+                <div class="card">
+                    
+                    @php
+                        $id = $transaction->id;
+                        
+                    @endphp
 
-                <div class="card-header bg-danger text-light">
-                    <p class="card-text m-1"> Transaction at 2020-05-17 07:09:11</p>
-                    <p class="card-text m-1"> User ID: 2</p>
-                    <p class="card-text m-1"> Username: user</p>
-                </div>
-                <div class="card-header bg-light text-danger">
-                    <p class="card-text m-1"> Transaction at 2020-05-17 07:09:11</p>
-                    <p class="card-text m-1"> User ID: 2</p>
-                    <p class="card-text m-1"> Username: user</p>
-                </div>
+                    @if ($id%2==1)
+                        <div class="card-header bg-danger text-light">
+                            <p class="card-text m-1"> Transaction at {{ $transaction->created_at }}</p>
+                            <p class="card-text m-1"> User ID: {{ $transaction->user->id }}</p>
+                            <p class="card-text m-1"> Username: {{ $transaction->user->name }}</p>
+                        </div>
+                    @else
+                        <div class="card-header bg-light text-danger">
+                            <p class="card-text m-1"> Transaction at {{ $transaction->created_at }}</p>
+                            <p class="card-text m-1"> User ID: {{ $transaction->user->id }}</p>
+                            <p class="card-text m-1"> Username: {{ $transaction->user->name }}</p>
+                        </div>
+                    @endif
+                    
 
-            </div>
+                </div>                
+            @endforeach
 
         </div>
 
