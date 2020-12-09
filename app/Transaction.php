@@ -9,7 +9,7 @@ use App\Pizza;
 class Transaction extends Model
 {
 
-    protected $fillable = ['user_id', 'pizza_id', 'username'];
+    protected $fillable = ['user_id', 'pizza_id', 'username', 'total_price', 'quantity'];
 
 
     public function user(){

@@ -53,11 +53,14 @@ Route::get('/admin/view-all-user-transaction', 'AdminController@viewAllUserTrans
 //Untuk Route ke Menu User
 Route::get('/user', 'UserController@index')->middleware('verified');
 Route::get('/user/pizza-detail/{pizza}', 'UserController@show')->middleware('verified');
+Route::get('/user/view-transaction-history/transaction-detail/{id}', 'CartController@show');
 Route::post('/user/pizza-detail/{pizza}', 'UserController@addToCart');
 Route::post('/user', 'CartController@store');
 Route::get('/user/view-transaction-history', 'TransactionController@index');
-Route::get('user/view-cart', 'CartController@index');
-
+Route::get('/user/view-cart', 'CartController@index');
+Route::put('/user/view-cart', 'CartController@update');
+Route::put('/user', 'CartController@update');
+Route::delete('/user/view-cart', 'CartController@destroy');
 
 
 

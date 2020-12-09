@@ -29,20 +29,22 @@
 @section('content')
 
 <div class="container">
-
+@foreach ($transactions as $transaction)
+    
+@endforeach
     <div class="jumbotron bg-light">
 
         <div class="card mb-3" style="max-width: 100%">
             <div class="row no-gutters p-5">
               <div class="col-md-4">
-                <img src="/assets/pizza11.jpg" class="card-img" alt="Ini Gambar Pizza">
+                <img src="/assets/{{ $transaction->pizza->photo }}" class="card-img" alt="Ini Gambar Pizza">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title mb-1">Tuna and Onion</h5>
-                  <p class="card-text mb-1">Rp. 85000</p>
-                  <p class="card-text mb-1">Quantity: 2</p>
-                  <p class="card-text mb-1">Total Price: Rp.170000</p>
+                  <h5 class="card-title mb-1">{{ $transaction->pizza->name }}</h5>
+                  <p class="card-text mb-1">Rp. {{ $transaction->pizza->price }}</p>
+                  <p class="card-text mb-1">Quantity: {{ $transaction->quantity  }}</p>
+                  <p class="card-text mb-1">Total Price: Rp.{{ $transaction->total_price }}</p>
                 </div>
               </div>
             </div>

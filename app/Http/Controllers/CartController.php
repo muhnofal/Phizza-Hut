@@ -48,6 +48,8 @@ class CartController extends Controller
             'user_id' => $user->id,
             'pizza_id' => $request->pizza_id,
             'username' => $user->name,
+            'total_price' => $request->totalPerItem,
+            'quantity' => $request->quantity,
         ]);
         
         $cart = Cart::where('user_id', $user->id);
@@ -65,7 +67,9 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        //
+        $transactions = Transaction::all()->where('id', $id);
+        return view('user/transaction-detail-page', compact('transactions'));
+        // return $transactions;
     }
 
     /**
@@ -86,9 +90,15 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        Cart::where('pizza_id', $request->pizza_id)
+        ->update([
+                'quantity' => $request->quantity,        
+            ]);
+            
+        return redirect('/user/view-cart');
     }
 
     /**
@@ -97,8 +107,12 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+
+        Cart::destroy($request->cart_id);
+
+        return redirect('/user/view-cart');
+
     }
 }

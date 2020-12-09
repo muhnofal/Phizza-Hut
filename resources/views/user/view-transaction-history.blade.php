@@ -47,11 +47,11 @@
                 @endphp
 
                 @if ($id%2==1)
-                    <a href="/user/transaction-detail" class="text-reset text-decoration-none">
+                    <a href="/user/view-transaction-history/transaction-detail/{{ $transaction->id }}" class="text-reset text-decoration-none">
                         <div class="card-body bg-danger text-light"> Transaction at {{ $transaction->created_at }} </div>
                     </a>
                 @else
-                    <a href="/user/transaction-detail" class="text-reset text-decoration-none">
+                    <a href="/user/view-transaction-history/transaction-detail/{{ $transaction->id }}" class="text-decoration-none text-reset">
                         <div class="card-body"> Transaction at {{ $transaction->created_at }} </div>
                     </a>
                 @endif

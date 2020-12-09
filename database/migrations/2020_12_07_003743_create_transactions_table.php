@@ -18,6 +18,8 @@ class CreateTransactionsTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('pizza_id');
             $table->string('username');
+            $table->integer('total_price');
+            $table->integer('quantity');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('pizza_id')->references('id')->on('pizzas');
             $table->timestamps();

@@ -38,17 +38,30 @@
                     <img src="/assets/{{ $cart->pizza->photo }}" class="card-img" alt="Ini Gambar Pizza">
                 </div>
                 <div class="col-md-8">
+
+                    @php
+
+                        $totalPerItem = 0;
+                        $price = $cart->pizza->price;
+                        $qty = $cart->quantity;
+                        $totalPerItem = $totalPerItem + ($price * $qty);
+
+                    @endphp
+
                     <div class="card-body">
                     <h5 class="card-title mb-1 font-weight-bold"> {{ $cart->pizza->name }} </h5>
-                    <p class="card-text mb-1"> Rp. {{ $cart->pizza->price }} </p>
-                    <p class="card-text mb-1"> Quantity: {{ $cart->quantity }}</p>
-
+                    <p class="card-text mb-1"> Rp. {{ $price }} </p>
+                    <p class="card-text mb-1"> Quantity: {{ $qty }}</p>
+                    
+                    <form action="{{ url("user/view-cart") }}" method="POST" name="formedit">
+                        @csrf
+                        @method('put')
                         <div class="form-group row">
                             <label for="quantity" class="col-md-2 col-form-label">{{ __('Quantity') }}</label>
 
                             <div class="col-md-5">
                                 <input id="quantity" type="text" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" autocomplete="quantity" autofocus>
-
+                                <input type="hidden" name="pizza_id" id="" value="{{ $cart->pizza->id }}">
                                 @error('quantity')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -59,16 +72,20 @@
                         </div>
 
                         <span class="d-block pt-3">
-                            <a href="">
-                                <button type="button" class="btn btn-primary">Update Quantity</button>
-                            </a>
+                            <button type="submit" class="btn btn-primary">Update Quantity</button>
                         </span>
+                        
+                    </form>
 
+                    <form action="{{ url("user/view-cart") }}" method="POST" name="formdelete">
+                        @csrf
+                        @method('delete')
+                        <input type="hidden" name="cart_id" id="" value="{{ $cart->id }}">
                         <span class="d-block pt-3">
-                            <a href="">
-                                <button type="button" class="btn btn-danger">Delete From Cart</button>
-                            </a>
+                            <button type="submit" class="btn btn-danger">Delete From Cart</button>
                         </span>
+                    </form>
+
 
                     </div>
 
@@ -79,6 +96,8 @@
 
         <form action="/user" method="POST">
             <input type="hidden" name="pizza_id" id="" value="{{ $cart->pizza->id }}">
+            <input type="hidden" name="totalPerItem" id="" value="{{ $totalPerItem }}">
+            <input type="hidden" name="quantity" id="" value="{{ $qty }}">
             @endforeach
             @csrf
             
