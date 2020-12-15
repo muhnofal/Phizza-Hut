@@ -83,4 +83,13 @@ class GuestController extends Controller
     {
         //
     }
+
+    public function search(Request $request){
+        
+        $search = $request->key;
+        $results = Pizza::where('name', 'LIKE', '%' . $search . '%')->paginate(6);
+
+        return view('guest/result', compact('results'));
+
+    }
 }

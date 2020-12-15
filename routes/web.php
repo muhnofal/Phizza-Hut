@@ -37,6 +37,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Untuk Route ke Menu Guest
 Route::get('/', 'GuestController@index')->middleware('guest');
 Route::get('/pizza-detail/{pizza}', 'GuestController@show')->middleware('guest');
+Route::get('/search', 'GuestController@search');
 
 //Untuk Route ke Menu Admin
 Route::get('/admin', 'AdminController@index');
@@ -61,6 +62,7 @@ Route::get('/user/view-cart', 'CartController@index');
 Route::put('/user/view-cart', 'CartController@update');
 Route::put('/user', 'CartController@update');
 Route::delete('/user/view-cart', 'CartController@destroy');
+Route::get('/user/search', 'UserController@search');
 
 
 

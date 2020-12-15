@@ -41,4 +41,11 @@ class UserController extends Controller
         // return $pizza;
     }
 
+    public function search(Request $request){
+        $search = $request->key;
+        $results = Pizza::where('name', 'LIKE', '%' . $search . '%')->paginate(6);
+
+        return view('user/result', compact('results'));
+    }
+
 }

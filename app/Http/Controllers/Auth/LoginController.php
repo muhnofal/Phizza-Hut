@@ -37,4 +37,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // public function cekLogin(Request $request){
+    //     $remember = $request->remember ? true : false;
+    //     $up = $request->only('username', 'password');
+
+    //     if(Auth::attemp($up, $remember)){
+    //         return redirect()->route('/home');
+    //     }
+    //     return redirect('/');
+    // }
+
 }
