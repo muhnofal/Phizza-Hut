@@ -42,21 +42,21 @@
                         <div class="form-group row">
                             <label for="editpizzaname" class="col-sm-3 col-form-label">Pizza Name: </label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" id="editpizzaname" name="editpizzaname" value="{{ $pizza->name }}">
+                              <input type="text" class="form-control @error('editpizzaname') is-invalid @enderror" id="editpizzaname" name="editpizzaname" value="{{ $pizza->name }}" required autocomplete="editpizzaname" autofocus>
                             </div>
                         </div>
     
                         <div class="form-group row">
                             <label for="editpizzaprice" class="col-sm-3 col-form-label">Pizza Price: </label>
                             <div class="col-sm-8">
-                              <input type="number" class="form-control" id="editpizzaprice" name="editpizzaprice" value="{{ $pizza->price }}">
+                              <input type="number" class="form-control @error('editpizzaprice') is-invalid @enderror" id="editpizzaprice" name="editpizzaprice" value="{{ $pizza->price }}" required autocomplete="editpizzaprice" autofocus>
                             </div>
                         </div>
         
                         <div class="form-group row">
                             <label for="editpizzadesc" class="col-sm-3 col-form-label">Pizza Description: </label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" id="editpizzadesc" name="editpizzadesc" value="{{ $pizza->description }}">
+                              <input type="text" class="form-control @error('editpizzadesc') is-invalid @enderror" id="editpizzadesc" name="editpizzadesc" value="{{ $pizza->description }}" required autocomplete="editpizzadesc" autofocus>
                             </div>
                         </div>
         
@@ -64,7 +64,7 @@
         
                             <label for="editpizzaimg" class="col-sm-3 col-form-label">Pizza Image: </label>
                             <div class="col-sm-8">
-                                <input type="file" class="form-control" id="editpizzaimg" name="editpizzaimg" value="{{ $pizza->photo }}">
+                                <input type="file" class="form-control @error('editpizzaimg') is-invalid @enderror" id="editpizzaimg" name="editpizzaimg" value="{{ $pizza->photo }}" required autocomplete="editpizzaimg" autofocus>
                             </div>
         
                         </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Pizza;
 use App\User;
 use App\Transaction;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -26,6 +27,13 @@ class AdminController extends Controller
     }
 
     public function store(Request $request){
+
+        $validatedData = $request->validate([
+            'pizzaname' => ['required', 'max:20'],
+            'pizzaprice' => ['required', 'numeric', 'min:10000'],
+            'pizzadesc' => ['required', 'min:20'],
+            'pizzaimg' => ['required', 'image'],
+        ]);
 
         $pizza =  Pizza::create([
             'name' => $request['pizzaname'],
@@ -56,6 +64,7 @@ class AdminController extends Controller
     }
 
     public function addPizzaPage(){
+        
         return view('admin/add-pizza-page');
     }
 
@@ -67,13 +76,20 @@ class AdminController extends Controller
     
     public function update(Request $request, Pizza $pizza){
 
-            Pizza::where('id', $pizza->id)
-            ->update([
-                    'name' => $request->editpizzaname,
-                    'price' => $request->editpizzaprice,
-                    'description' => $request->editpizzadesc,
-                    'photo' => $request->editpizzaimg        
-                ]);
+        $validatedData = $request->validate([
+            'editpizzaname' => ['required', 'max:20'],
+            'editpizzaprice' => ['required', 'numeric', 'min:10000'],
+            'editpizzadesc' => ['required', 'min:20'],
+            'editpizzaimg' => ['required', 'image'],
+        ]);
+
+        Pizza::where('id', $pizza->id)
+        ->update([
+                'name' => $request->editpizzaname,
+                'price' => $request->editpizzaprice,
+                'description' => $request->editpizzadesc,
+                'photo' => $request->editpizzaimg        
+            ]);
 
         return redirect('/admin');
     }

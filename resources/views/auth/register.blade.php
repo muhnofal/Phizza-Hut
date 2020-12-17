@@ -96,15 +96,28 @@
                             <div class="col-md-6">
 
                                 <div class="form-check m-2">
-                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" @error('male') is-invalid @enderror  required autocomplete="male" autofocus>
                                     <label class="form-check-label" for="male">
                                       Male
                                     </label>
 
-                                    <input class="form-check-input ml-4" type="radio" name="gender" id="female" value="female">
+                                    <input class="form-check-input ml-4" type="radio" name="gender" id="female" value="female" @error('female') is-invalid @enderror  required autocomplete="female" autofocus>
                                     <label class="form-check-label ml-5" for="female">
                                         Female
                                     </label>
+
+                                    @error('male')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+
+                                    @error('female')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+
                                 </div>
 
                             </div>

@@ -1,9 +1,29 @@
 @extends('layouts.app')
 
 @section('title', 'Pizza Detail')
+@section('link1', 'View All User Transaction')
+@section('link1ref', '/admin/view-all-user-transaction')
+@section('link2', 'View All User')
+@section('link2ref', '/admin/view-all-user')
+@section('link3')
+<li class="nav-item dropdown">
+    <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+        {{ Auth::user()->name }} <span class="caret"></span>
+    </a>
 
-@section('link1', 'Login')
-@section('link2', 'Register')
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{{ route('logout') }}"
+        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+    </div>
+</li>
+@endsection
 
 @section('content')
 

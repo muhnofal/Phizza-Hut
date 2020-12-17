@@ -40,28 +40,48 @@
                         <div class="form-group row">
                             <label for="pizzaname" class="col-sm-3 col-form-label">Pizza Name: </label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="pizzaname" name="pizzaname">
+                                <input type="text" class="form-control @error('pizzaname') is-invalid @enderror" id="pizzaname" name="pizzaname" required autocomplete="pizzaname" autofocus >
+                                @error('pizzaname')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="pizzaprice" class="col-sm-3 col-form-label">Pizza Price: </label>
                             <div class="col-sm-8">
-                                <input type="number" class="form-control" id="pizzaprice" name="pizzaprice">
+                                <input type="text" class="form-control @error('pizzaprice') is-invalid @enderror" id="pizzaprice" name="pizzaprice" required autocomplete="pizzaprice" autofocus>
+                                @error('pizzaprice')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="pizzadesc" class="col-sm-3 col-form-label">Pizza Description: </label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="pizzadesc" name="pizzadesc">
+                                <input type="text" class="form-control @error('pizzadesc') is-invalid @enderror" id="pizzadesc" name="pizzadesc" required autocomplete="pizzadesc" autofocus>
+                                @error('pizzadesc')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="pizzaimg" class="col-sm-3 col-form-label">Pizza Image: </label>
                             <div class="col-sm-8">
-                                <input type="file" class="form-control" id="pizzaimg" name="pizzaimg">
+                                <input type="file" class="form-control @error('pizzaimg') is-invalid @enderror" id="pizzaimg" name="pizzaimg" required autocomplete="pizzaimg" autofocus>
+                                @error('pizzaimg')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                             
